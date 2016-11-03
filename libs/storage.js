@@ -89,7 +89,7 @@ storage.prototype.get = function (collection, key) {
     return null;
   }
 
-  return JSON.parse(fs.readFileSync(this.key_path(collection, key), "utf-8"));
+  return JSON.parse(fs.readFileSync(this.key_path(collection, key), "utf8"));
 };
 
 /**
