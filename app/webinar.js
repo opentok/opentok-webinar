@@ -8,7 +8,7 @@ let router = require("express").Router();
  * Route for creating new webinar
  */
 router.get("/new", (req, res) => {
-  res.render("webinar-new", { title: "Create Webinar"});
+  res.render("webinar-new", { title: "Create Webinar", csrf: req.csrfToken() });
 });
 
 /**
@@ -16,7 +16,7 @@ router.get("/new", (req, res) => {
  */
 router.post("/new", (req, res) => {
   // TODO: Do actual handling. Use `req.body`.
-  res.render("webinar-new", { title: "Created new Webinar"});
+  res.send("TODO");
 });
 
 

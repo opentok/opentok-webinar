@@ -10,6 +10,8 @@
 const express = require("express");
 const opentok = require("opentok");
 const bodyparser = require("body-parser");
+const cookies = require("cookie-parser");
+const csrf = require("csurf");
 const config = require("./config");
 const storage = require("./libs/storage");
 
@@ -39,6 +41,12 @@ app.set("view engine", "ejs");
 // Enable body-parser ----------------------------
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
+
+// Enable cookie-parser --------------------------
+app.use(cookies());
+
+// Enable CSRF
+app.use(csrf({ cookie: true }));
 
 // Mount routes ----------------------------------
 app.get("/", (req, res) => {
