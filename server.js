@@ -10,17 +10,22 @@
 const express = require("express");
 const opentok = require("opentok");
 const config = require("./config");
+const storage = require("./libs/storage");
 
 // Setup OpenTok ---------------------------------
 const OT = new opentok(config.opentok.api_key, config.opentok.api_secret);
+
+// Setup storage
+let db = new storage(config.app.storage_dir);
 
 // Create app instance ---------------------------
 let app = express();
 
 // Mount middlewares -----------------------------
 app.use((req, res, next) => {
-  req.config = config;
-  req.OT = OT;
+  req.config = config;          // Add config
+  req.OT = OT;                  // Add OpenTok SDK instance
+  req.db = db;                  // Add db connection
   res.setHeader("X-Powered-By", "Tokinar");
   next();
 });

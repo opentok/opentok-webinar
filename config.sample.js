@@ -23,7 +23,12 @@ module.exports = {
     /**
      * Port to host the application on. Default: 8080.
      */
-    port: 8080
+    port: 8080,
+
+    /**
+     * Directory for storage. Default: "./storage"
+     */
+    storage_dir: "./storage"
   },
 
   // ----------------------------------------------

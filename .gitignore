@@ -22,3 +22,6 @@ tramp
 
 # Ignore main config file
 /config.js
+
+# Ignore default storage location
+/storage
