@@ -4,10 +4,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tokinar</title>
+    <title><%= typeof title !== "undefined" ? title : "Tokinar" %></title>
 
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/tokinar.css">
 
   </head>
 
   <body class="default">
+
+    <section class="page-container">

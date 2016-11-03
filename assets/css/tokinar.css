@@ -1,0 +1,131 @@
+/* - Global styles/overrides ------------------ */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 16px;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 400;
+    background-color: #fff;
+    color: #151515;
+    text-rendering: optimizeLegibility;
+    margin: 0;
+    padding: 0;
+    word-wrap: break-word;
+}
+
+/* - Headings --------------------------------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 400;
+    margin-left: 0;
+}
+
+h1 {
+    font-size: 1.5rem;
+}
+
+h2 {
+    font-size: 1.25rem;
+}
+
+h3 {
+    font-size: 1.1rem;
+}
+
+h4 {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+/* - Hyperlinks and buttons ------------------- */
+a,
+a:visited {
+    color: #0099cc;
+    text-decoration: none;
+    transition: color 0.5s ease-out;
+}
+
+a:hover {
+    color: #0080ab;
+}
+
+a.btn,
+button.btn {
+    background-color: #0099cc;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    text-align: center;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    margin: 0.5rem;
+    padding: 0 2rem;
+    display: inline-block;
+    transition: all 0.5s ease-out;
+}
+
+a.btn:hover,
+button.btn:hover {
+    background-color: #0080ab;
+}
+
+a.btn.btn-light,
+button.btn.btn-light {
+    background-color: #fff;
+    border: 1px solid #0099cc;
+    color: #0099cc;
+}
+
+a.btn.btn-light:hover,
+button.btn.btn-light:hover {
+    color: #0080ab;
+    border-color: #0080ab;
+}
+
+a.btn:first-child,
+button.btn:first-child {
+    margin-left: 0;
+}
+
+a.btn:last-child,
+button.btn:last-child {
+    margin-right: 0;
+}
+
+/* - Reusable components ---------------------- */
+.center {
+    text-align: center;
+}
+
+.highlight {
+    width: 75%;
+    margin: 0 auto;
+    position: relative;
+    padding: 2rem;
+    background-color: #fafafa;
+    text-align: center;
+}
+
+/* - Page layout ------------------------------ */
+body > section {
+    display: block;
+    width: 95%;
+    margin: 0 auto;
+}
+
+/* - Homepage --------------------------------- */
+
+
+/* - Webinar pages ---------------------------- */
+
+
+/* - Schedule pages --------------------------- */

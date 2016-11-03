@@ -7,7 +7,7 @@
 let router = require("express").Router();
 
 router.get("/", (req, res) => {
-  res.send("Schedule");
+  res.render("schedule", { title: "Schedule a Webinar" });
 });
 
 
