@@ -1,34 +1,52 @@
-// Copyright 2016 Kaustav Das Modak
-//
-// Licensed under the Apache License, Version 2.0 (the "License"); you
-// may not use this file except in compliance with the License. You may
-// obtain a copy of the License at
-//
-// http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
-// implied. See the License for the specific language governing
-// permissions and limitations under the License.
+/**
+ * Tokinar main server script
+ *
+ * This script starts the Tokinar application server by mounting all
+ * the necessary routes, loading configuration and creating a handler
+ * to OpenTok's server side SDK.
+ */
 
-const app = require("express")();
+// Load dependencies -----------------------------
+const express = require("express");
 const opentok = require("opentok");
 const config = require("./config");
 
-// Setup OpenTok
+// Setup OpenTok ---------------------------------
 const OT = new opentok(config.opentok.api_key, config.opentok.api_secret);
 
-/**
- * Homepage
- */
-app.get("/", (req, res) => {
-  res.send("Hello World!");
+// Create app instance ---------------------------
+let app = express();
+
+// Mount middlewares -----------------------------
+app.use((req, res, next) => {
+  req.config = config;
+  req.OT = OT;
+  res.setHeader("X-Powered-By", "Tokinar");
+  next();
 });
 
-/**
- * Start the server
- */
+// Set view engine -------------------------------
+app.set("view engine", "ejs");
+
+// Mount routes ----------------------------------
+app.get("/", (req, res) => {
+  res.render("homepage");
+});
+
+// Mount scheduling routes
+app.use("/schedule", require("./app/schedule"));
+
+// Mount webinar routes
+app.use("/webinar", require("./app/webinar"));
+
+// Mount API routes
+app.use("/api", require("./app/api"));
+
+// Mount the `./assets` dir as static.
+app.use("/assets", express.static("./assets"));
+
+
+// Start server ----------------------------------
 app.listen(config.app.port || 8080, () => {
   console.log(`Listening on port ${config.app.port || 8080}...`);
 });
