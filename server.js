@@ -9,6 +9,7 @@
 // Load dependencies -----------------------------
 const express = require("express");
 const opentok = require("opentok");
+const bodyparser = require("body-parser");
 const config = require("./config");
 const storage = require("./libs/storage");
 
@@ -21,17 +22,23 @@ let db = new storage(config.app.storage_dir);
 // Create app instance ---------------------------
 let app = express();
 
+// Security measures -----------------------------
+app.disable("x-powered-by");
+
 // Mount middlewares -----------------------------
 app.use((req, res, next) => {
   req.config = config;          // Add config
   req.OT = OT;                  // Add OpenTok SDK instance
   req.db = db;                  // Add db connection
-  res.setHeader("X-Powered-By", "Tokinar");
   next();
 });
 
 // Set view engine -------------------------------
 app.set("view engine", "ejs");
+
+// Enable body-parser ----------------------------
+app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({ extended: true }));
 
 // Mount routes ----------------------------------
 app.get("/", (req, res) => {
