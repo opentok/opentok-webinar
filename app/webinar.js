@@ -14,8 +14,11 @@
 
 let router = require("express").Router();
 
-router.get("/", (req, res) => {
-  res.send("Webinar");
+/**
+ * Route for creating new webinar
+ */
+router.get("/new", (req, res) => {
+  res.render("webinar-new", { title: "Create Webinar"});
 });
 
 

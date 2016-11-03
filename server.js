@@ -50,6 +50,16 @@ app.use("/api", require("./app/api"));
 // Mount the `./assets` dir as static.
 app.use("/assets", express.static("./assets"));
 
+// Handle errors ---------------------------------
+app.use((req, res) => {
+  res.status(404).render("404");
+});
+
+app.use((err, req, res, next) => {
+  console.log("Error", err);
+  res.status(500).render("500");
+});
+
 
 // Start server ----------------------------------
 app.listen(config.app.port || 8080, () => {
