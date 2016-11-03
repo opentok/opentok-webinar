@@ -5,7 +5,7 @@ A simple Webinar application based on OpenTok.
 
 ## Requirements
 
-- NodeJS v4+
+- NodeJS v6.9+
 - TokBox Account (API Key and Secret)
 
 ## Install
