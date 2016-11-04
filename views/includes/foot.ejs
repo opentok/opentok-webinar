@@ -1,6 +1,8 @@
 </section>
 
-<script src="/assets/js/tokinar.js"></script>
+<% scripts.forEach(function (script) { %>
+  <script src="/assets/js/<%= script %>.js"></script>
+<% }); %>
 
 </body>
 </html>

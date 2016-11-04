@@ -54,8 +54,8 @@ app.use((req, res, next) => {
     csrf: null,                 // Use req.csrfToken()
     error: msgs.from_query("error", req.query.e), // Error message
     info: msgs.from_query("info", req.query.i),   // Info message
-    scripts: ["tokinar.js"],    // List of scripts to load
-    styles: ["tokinar.css"]     // List of styles to load
+    scripts: ["tokinar"],    // List of scripts to load
+    styles: ["tokinar"]     // List of styles to load
   };
 
   next();
