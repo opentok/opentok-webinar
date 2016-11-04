@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><%= typeof title !== "undefined" ? title : "Tokinar" %></title>
+    <title><%= title %></title>
 
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/tokinar.css">
@@ -16,3 +16,4 @@
   <body class="with-opentok">
 
     <section class="page-container">
+      <%- include("messages") %>

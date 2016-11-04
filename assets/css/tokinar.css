@@ -161,6 +161,7 @@ input[type="submit"].btn:last-child {
     text-align: right;
     margin-right: 1rem;
     color: #13576e;
+    cursor: pointer;
 }
 
 .input-box label.required::after {
@@ -194,6 +195,17 @@ body > section {
     display: block;
     width: 95%;
     margin: 0 auto;
+}
+
+.msg {
+    padding: 1rem;
+    background-color: #0099cc;
+    color: #fff;
+    font-size: 1.125rem;
+}
+
+.msg.error-msg {
+    background-color: #ce6363;
 }
 
 /* - Homepage --------------------------------- */

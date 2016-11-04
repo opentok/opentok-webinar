@@ -14,6 +14,8 @@ const cookies = require("cookie-parser");
 const csrf = require("csurf");
 const config = require("./config");
 const storage = require("./libs/storage");
+const utils = require("./libs/utils");
+const msgs = require("./libs/messages");
 
 // Setup OpenTok ---------------------------------
 const OT = new opentok(config.opentok.api_key, config.opentok.api_secret);
@@ -23,17 +25,6 @@ let db = new storage(config.app.storage_dir);
 
 // Create app instance ---------------------------
 let app = express();
-
-// Security measures -----------------------------
-app.disable("x-powered-by");
-
-// Mount middlewares -----------------------------
-app.use((req, res, next) => {
-  req.config = config;          // Add config
-  req.OT = OT;                  // Add OpenTok SDK instance
-  req.db = db;                  // Add db connection
-  next();
-});
 
 // Set view engine -------------------------------
 app.set("view engine", "ejs");
@@ -48,9 +39,31 @@ app.use(cookies());
 // Enable CSRF
 app.use(csrf({ cookie: true }));
 
+// Security measures -----------------------------
+app.disable("x-powered-by");
+
+// Mount middlewares -----------------------------
+app.use((req, res, next) => {
+  req.config = config;          // Add config
+  req.OT = OT;                  // Add OpenTok SDK instance
+  req.db = db;                  // Add db connection
+  req.utils = utils;            // Add utility functions
+
+  req.template_data = {         // Set data for templates
+    title: "Tokinar",           // Default page title
+    csrf: null,                 // Use req.csrfToken()
+    error: msgs.from_query("error", req.query.e), // Error message
+    info: msgs.from_query("info", req.query.i),   // Info message
+    scripts: ["tokinar.js"],    // List of scripts to load
+    styles: ["tokinar.css"]     // List of styles to load
+  };
+
+  next();
+});
+
 // Mount routes ----------------------------------
 app.get("/", (req, res) => {
-  res.render("homepage");
+  res.render("homepage", req.template_data);
 });
 
 // Mount scheduling routes
@@ -59,20 +72,19 @@ app.use("/schedule", require("./app/schedule"));
 // Mount webinar routes
 app.use("/webinar", require("./app/webinar"));
 
-// Mount API routes
-app.use("/api", require("./app/api"));
-
 // Mount the `./assets` dir as static.
 app.use("/assets", express.static("./assets"));
 
 // Handle errors ---------------------------------
 app.use((req, res) => {
-  res.status(404).render("404");
+  req.template_data.title = "Gone! Not found!";
+  res.status(404).render("404", req.template_data);
 });
 
 app.use((err, req, res, next) => {
   console.log("Error", err);
-  res.status(500).render("500");
+  req.template_data.title = "OOPS!";
+  res.status(500).render("500", req.template_data);
 });
 
 
