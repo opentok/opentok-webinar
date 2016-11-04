@@ -67,10 +67,10 @@ app.get("/", (req, res) => {
 });
 
 // Mount scheduling routes
-app.use("/schedule", require("./app/schedule"));
+app.use("/schedule", require("./routes/schedule"));
 
 // Mount webinar routes
-app.use("/webinar", require("./app/webinar"));
+app.use("/webinar", require("./routes/webinar"));
 
 // Mount the `./assets` dir as static.
 app.use("/assets", express.static("./assets"));
