@@ -3,6 +3,8 @@ Tokinar
 
 A simple Webinar application based on OpenTok.
 
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/kaustavdm/tokinar)
+
 ## Requirements
 
 - NodeJS v6.9+
