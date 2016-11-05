@@ -1,3 +1,5 @@
+/* global OT, Tokinar, $ */
+
 /**
  * Viewer scripts
  */
