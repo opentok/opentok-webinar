@@ -22,7 +22,8 @@ router.get("/new", (req, res) => {
  */
 router.post("/new", (req, res) => {
   let name = req.body.webinar_name ? req.body.webinar_name.trim() : "";
-  let pin = req.body.webinar_presenter_pin ? req.body.webinar_presenter_pin.trim() : "";
+  let presenter_pin = req.body.webinar_presenter_pin ? req.body.webinar_presenter_pin.trim() : "";
+  let viewer_pin = req.body.webinar_viewer_pin ? req.body.webinar_viewer_pin.trim() : "";
 
   if (!name) {
     res.redirect("/webinar/new?e=invalid_input");
@@ -36,7 +37,12 @@ router.post("/new", (req, res) => {
   }
 
   try {
-    req.db.put("webinars", slug, { id: slug, name: name, pin: pin });
+    req.db.put("webinars", slug, {
+      id: slug,
+      name: name,
+      presenter_pin: presenter_pin,
+      viewer_pin: viewer_pin
+    });
   } catch (e) {
     console.log("Error", e);
     res.redirect("/webinar/new?e=500");
