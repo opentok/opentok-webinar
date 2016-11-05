@@ -1,3 +1,5 @@
+/* global OT, Tokinar, $ */
+
 /**
  * Presenter scripts
  */
@@ -35,27 +37,14 @@
     // TODO: Handle ending broadcast
   };
 
-  var setup_handlers = function () {
+  var setup_handlers = function (session) {
+    _session = session;
     $("#start-btn").addEventListener("click", handle_start);
     $("#pause-btn").addEventListener("click", handle_pause);
     $("#end-btn").addEventListener("click", handle_end);
   };
 
   // Test browser capabilities and start session
-  if (OT.checkSystemRequirements() === 1) {
-    _session = OT.initSession(_attrs.api_key, _attrs.session_id);
-    _session.connect(_attrs.token, function (err) {
-      if (err) {
-        console.log(err);
-        $("#presenter-view").innerHTML = "Error connecting to media server. Try again later.";
-        return;
-      }
-      setup_handlers();
-    });
-  } else {
-    // Meh, your browser doesn't love WebRTC.
-    $("#start-btn").disabled = true;
-    $("#presenter-view").innerHTML = "<p>Your browser does not support WebRTC.</p>";
-  }
+  Tokinar.init_connection(_attrs, setup_handlers);
 
 })($, Tokinar, OT);

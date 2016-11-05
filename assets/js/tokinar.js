@@ -1,3 +1,4 @@
+/* global OT */
 "use strict";
 
 /**
@@ -41,4 +42,28 @@ Tokinar.get_opentok_attrs = function () {
     console.log(e);
     return null;
   }
+};
+
+/**
+ * Initialize an Opentok connection and execute callback
+ */
+Tokinar.init_connection = function (_attrs, cb) {
+  var _session;
+  // Test browser capabilities and start session
+  if (OT.checkSystemRequirements() === 1) {
+    _session = OT.initSession(_attrs.api_key, _attrs.session_id);
+    _session.connect(_attrs.token, function (err) {
+      if (err) {
+        console.log(err);
+        // TODO: Show UI message
+        return;
+      }
+      cb(_session);
+    });
+  } else {
+    // Meh, your browser doesn't love WebRTC.
+    // TODO: Show better UI message
+    alert("Your browser does not support WebRTC.");
+  }
+
 };

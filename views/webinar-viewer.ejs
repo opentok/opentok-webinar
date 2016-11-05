@@ -2,6 +2,8 @@
 
 <h1>Webinar: <%= webinar.name %></h1>
 
-<div id="presenter"></div>
+<div id="webinar" data-opentok="<%= JSON.stringify(opentok) %>">
+  <div id="presenter"></div>
+</div>
 
 <%- include("includes/foot") %>
