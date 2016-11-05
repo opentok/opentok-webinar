@@ -37,6 +37,10 @@ let merge_env = config => {
       config[sp[0]][sp[1]] = process.env[k];
     }
   }
+
+  // Override specific known envs
+  process.env.PORT && (config.app.port = process.env.PORT);
+
   return config;
 };
 
