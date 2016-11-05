@@ -12,10 +12,13 @@ const opentok = require("opentok");
 const bodyparser = require("body-parser");
 const cookies = require("cookie-parser");
 const csrf = require("csurf");
-const config = require("./config");
+
 const storage = require("./libs/storage");
 const utils = require("./libs/utils");
 const msgs = require("./libs/messages");
+
+// Load config from file & merge with env vars ---
+let config = utils.merge_env(require("./config"));
 
 // Setup OpenTok ---------------------------------
 const OT = new opentok(config.opentok.api_key, config.opentok.api_secret);
