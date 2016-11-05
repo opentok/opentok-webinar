@@ -58,7 +58,8 @@ app.use((req, res, next) => {
     error: msgs.from_query("error", req.query.e), // Error message
     info: msgs.from_query("info", req.query.i),   // Info message
     scripts: ["tokinar"],    // List of scripts to load
-    styles: ["tokinar"]     // List of styles to load
+    styles: ["tokinar"],     // List of styles to load
+    app_url: utils.get_url(req, config) // URL of the website
   };
 
   next();

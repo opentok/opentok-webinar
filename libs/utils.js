@@ -75,15 +75,28 @@ let default_config = () => {
 let load_config = dir => {
   let config;
   try {
-    config = require(path.join(dir, config));
+    config = require(path.join(dir, "config"));
   } catch (_) {
     config = default_config();
   }
   return merge_env(config);
 };
 
+
+/**
+ * Get current domain URL
+ */
+let get_url = (req, config) => {
+  let u = `${req.protocol}://${req.hostname}`;
+  if (!((req.secure && config.app.port == 443) || (!req.secure && config.app.port == 80))) {
+    u = `${u}:${config.app.port}`;
+  }
+  return u;
+};
+
 // Export them
 module.exports = {
   as_slug: as_slug,
-  load_config: load_config
+  load_config: load_config,
+  get_url: get_url
 };
