@@ -32,7 +32,9 @@ let from_query = (t, q) => {
 // Error messages
 let error = {
   exists: "Webinar already exists by that name. Please choose a different name.",
-  invalid_input: "Invalid input."
+  invalid_input: "Invalid input.",
+  500: "Application hit an error. Please try after some time.",
+  403: "You do not have access there."
 };
 
 // Info messages

@@ -1,0 +1,19 @@
+<%- include("includes/head-with-opentok") %>
+
+<h1>[Presenter] Webinar: <%= webinar.name %></h1>
+
+<div id="webinar" data-opentok="<%= JSON.stringify(opentok) %>">
+
+  <div class="highlight">
+    <button id="start-btn" class="btn">Start broadcast</button>
+    <button id="pause-btn" class="btn btn-light" disabled="disabled">Pause broadcast</button>
+    <button id="end-btn" class="btn btn-red" disabled="disabled">End broadcast</button>
+  </div>
+
+
+  <div id="presenter-view" class="viewport inactive">
+    <p>Not broadcasting. Press "Start broadcast" to begin.</p>
+  </div>
+</div>
+
+<%- include("includes/foot") %>
