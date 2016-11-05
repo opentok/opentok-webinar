@@ -10,6 +10,10 @@
     "type": "git",
     "url": "git+https://github.com/kaustavdm/tokinar.git"
   },
+  "engines": {
+    "node": "6.9.x",
+    "npm": "3.x"
+  },
   "keywords": [
     "webinar",
     "tokbox",
