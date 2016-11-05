@@ -29,6 +29,7 @@
   "homepage": "https://github.com/kaustavdm/tokinar#readme",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
     "csurf": "^1.9.0",
     "ejs": "^2.5.2",
     "express": "^4.14.0",
