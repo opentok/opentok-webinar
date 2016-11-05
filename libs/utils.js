@@ -2,6 +2,8 @@
  * Utility methods for Tokinar
  */
 
+const path = require("path");
+
 /**
  * Generate URL "slug" version of a given string.
  *
@@ -44,8 +46,44 @@ let merge_env = config => {
   return config;
 };
 
+
+/**
+ * Default config for Tokinar
+ *
+ * @returns {Object} The default config object
+ */
+let default_config = () => {
+  return {
+    app: {
+      port: 8080,
+      storage_dir: "./storage"
+    },
+    opentok: {
+      api_key: "",
+      api_secret: ""
+    }
+  };
+};
+
+
+/**
+ * Loads config in given path. If not found, returns default config.
+ *
+ * @param {string} dir Directory to load config from
+ * @returns {Object} A config object
+ */
+let load_config = dir => {
+  let config;
+  try {
+    config = require(path.join(dir, config));
+  } catch (_) {
+    config = default_config();
+  }
+  return merge_env(config);
+};
+
 // Export them
 module.exports = {
   as_slug: as_slug,
-  merge_env: merge_env
+  load_config: load_config
 };

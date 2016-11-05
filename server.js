@@ -18,7 +18,7 @@ const utils = require("./libs/utils");
 const msgs = require("./libs/messages");
 
 // Load config from file & merge with env vars ---
-let config = utils.merge_env(require("./config"));
+let config = utils.load_config(process.env.PWD);
 
 // Setup OpenTok ---------------------------------
 const OT = new opentok(config.opentok.api_key, config.opentok.api_secret);
