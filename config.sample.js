@@ -13,6 +13,12 @@ module.exports = {
   app: {
 
     /**
+     * Base URL for the application, including protocol, hostname and
+     * port
+     */
+    base_url: "http://localhost:8080",
+
+    /**
      * Port to host the application on. Default: 8080.
      */
     port: 8080,

@@ -9,6 +9,9 @@
     },
     "opentok__api_secret": {
       "description": "An API secret provided by opentok"
+    },
+    "app__base_url": {
+      "description": "Base URL for the application, including protocol, hostname and port. e.g., https://example.com or http://example.com:8080. Avoid trailing slash."
     }
   }
 }

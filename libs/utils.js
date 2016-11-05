@@ -28,7 +28,8 @@ let as_slug = s => {
  * @returns {Object} The provided object merged with env vars.
  */
 let merge_env = config => {
-  let known_vars = ["app__port",
+  let known_vars = ["app__base_url",
+                    "app__port",
                     "app__storage_dir",
                     "opentok__api_key",
                     "opentok__api_secret"];
@@ -55,6 +56,7 @@ let merge_env = config => {
 let default_config = () => {
   return {
     app: {
+      base_url: "http://localhost:8080",
       port: 8080,
       storage_dir: "./storage"
     },
@@ -82,21 +84,8 @@ let load_config = dir => {
   return merge_env(config);
 };
 
-
-/**
- * Get current domain URL
- */
-let get_url = (req, config) => {
-  let u = `${req.protocol}://${req.hostname}`;
-  if (!((req.secure && config.app.port == 443) || (!req.secure && config.app.port == 80))) {
-    u = `${u}:${config.app.port}`;
-  }
-  return u;
-};
-
 // Export them
 module.exports = {
   as_slug: as_slug,
-  load_config: load_config,
-  get_url: get_url
+  load_config: load_config
 };
