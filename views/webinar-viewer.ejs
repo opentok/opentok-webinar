@@ -1,6 +1,6 @@
 <%- include("includes/head-with-opentok") %>
 
-<h1>Webinar: <%= webinar.name %></h1>
+<h1 class="page-title"><span id="webinar-status">[Offline]</span> Webinar: <%= webinar.name %></h1>
 
 <div id="webinar" data-opentok="<%= JSON.stringify(opentok) %>">
   <div id="presenter"></div>

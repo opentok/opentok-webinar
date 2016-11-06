@@ -6,9 +6,9 @@
 
 body {
     font-size: 16px;
-    font-family: "Noto Sans", sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-weight: 400;
-    background-color: #fff;
+    background-color: #e4e4e4;
     color: #151515;
     text-rendering: optimizeLegibility;
     margin: 0;
@@ -24,12 +24,13 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Noto Sans", sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-weight: 400;
     margin-left: 0;
 }
 
 h1 {
+    color: #5d5d5d;
     font-size: 1.5rem;
 }
 
@@ -61,7 +62,7 @@ a:hover {
 input[type="submit"] {
     border: 0;
     font-size: 1rem;
-    font-family: "Noto Sans", sans-serif;
+    font-family: "Open Sans", sans-serif;
 }
 
 a.btn,
@@ -156,18 +157,6 @@ input[type="submit"].btn.btn-red:disabled {
     color: #ccc;
 }
 
-a.btn:first-child,
-button.btn:first-child,
-input[type="submit"].btn:first-child {
-    margin-left: 0;
-}
-
-a.btn:last-child,
-button.btn:last-child,
-input[type="submit"].btn:last-child {
-    margin-right: 0;
-}
-
 /* - Reusable components ---------------------- */
 .center {
     text-align: center;
@@ -233,8 +222,22 @@ input[type="submit"].btn:last-child {
 /* - Page layout ------------------------------ */
 body > section {
     display: block;
-    width: 95%;
+    width: 100%;
     margin: 0 auto;
+    overflow-x: hidden;
+    padding: 0 1rem;
+    min-height: 90vh;
+    background-color: #fff;
+}
+
+.page-title {
+    margin: 1rem 0 1rem 0;
+    padding: 0 0 1rem 0;
+    border-bottom: 1px solid #0099cc;
+}
+
+.page-title span {
+    color: #0080ab;
 }
 
 .msg {
@@ -248,13 +251,106 @@ body > section {
     background-color: #ce6363;
 }
 
+.box > div {
+    padding-bottom: 0.5rem;
+    border-bottom: 0.25rem solid #f3f3f3;
+    margin-bottom: 0.5rem;
+}
+
+.box > div > h2 {
+    color: #0080ab;
+    padding: 0.25rem;
+    margin: 0 0 0.25rem 0;
+    font-size: 1rem;
+}
+
+footer {
+    width: 100%;
+    margin: 2rem 0 0 0;
+    padding: 1rem;
+    background-color: #e4e4e4;
+    color: #7b7b7b;
+    font-size: 0.75rem;
+}
+
+footer a,
+footer a:visited {
+    color: #6f6f6f;
+}
+
+footer a:hover {
+    color: #333;
+}
+
+footer p {
+    text-align: center;
+}
+
 /* - Homepage --------------------------------- */
 
 
 /* - Webinar pages ---------------------------- */
 .viewport {
     background-color: #f3f3f3;
-    padding: 1rem;
+}
+
+#webinar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#webinar > div {
+    margin: 0px auto;
+}
+
+#webinar .controls {
+    width: 16rem;
+}
+
+#webinar .display {
+    flex-grow: 1;
+}
+
+#presenter-info {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+
+#broadcast-status {
+    width: 7.5rem;
+    text-align: center;
+    padding: 0.25rem;
+    transition: all 0.5s ease-out;
+}
+
+#broadcast-status.offline {
+    background-color: #8c8c8c;
+    color: #f3f3f3;
+}
+
+#broadcast-status.onair {
+    background-color: green;
+    color: #fff;
+    font-weight: bold;
+}
+
+#broadcast-status.connecting {
+    background-color: #d0b600;
+    color: #fff;
+}
+
+#broadcast-status.paused {
+    background-color: #0088ab;
+    color: #fff;
+    font-weight: bold;
+}
+
+#broadcast-status.error {
+    background-color: #ce6363;
+    color: #fff;
+    font-weight: bold;
 }
 
 /* - Schedule pages --------------------------- */

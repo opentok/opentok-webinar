@@ -1,33 +1,38 @@
 <%- include("includes/head-with-opentok") %>
 
-<h1>[Presenter] Webinar: <%= webinar.name %></h1>
+<h1 class="page-title"><span>[Presenter]</span> Webinar: <%= webinar.name %></h1>
 
 <div id="webinar" data-opentok="<%= JSON.stringify(opentok) %>">
 
-  <div class="highlight">
-    <button id="start-btn" class="btn">Start broadcast</button>
-    <button id="pause-btn" class="btn btn-light" disabled="disabled">Pause broadcast</button>
-    <button id="end-btn" class="btn btn-red" disabled="disabled">End broadcast</button>
+  <div class="controls box">
+    <div id="webinar-controls">
+      <h2>Broadcast controls</h2>
+      <button id="start-btn" class="btn" disabled="disabled">Start broadcast</button>
+      <button id="pause-btn" class="btn btn-light" disabled="disabled">Pause broadcast</button>
+      <button id="end-btn" class="btn btn-red" disabled="disabled">End broadcast</button>
+    </div>
     <div class="url-box">
-      <div class="box-item">
-        Viewer URL:
-        <a href="<%= webinar.urls.viewer %>" target="_blank">
-          <code><%= webinar.urls.viewer %></code>
-        </a>
-      </div>
-      <div class="box-item">
-        Presenter URL:
-        <a href="<%= webinar.urls.presenter %>" target="_blank">
-          <code><%= webinar.urls.presenter %></code>
-        </a>
-      </div>
+      <h2>Share URLs</h2>
+      <ul>
+        <li>
+          <a href="<%= webinar.urls.viewer %>" target="_blank">Viewer URL</a>
+        </li>
+        <li>
+          <a href="<%= webinar.urls.presenter %>" target="_blank">Presenter URL</a>
+        </li>
+      </ul>
     </div>
   </div>
 
-
-  <div id="presenter-view" class="viewport inactive">
-    <p>Not broadcasting. Press "Start broadcast" to begin.</p>
+  <div class="display box">
+    <div id="presenter-info">
+      <div id="broadcast-status" class="offline">Offline</div>
+      <div id="presenter-msg">Loading...</div>
+    </div>
+    <div id="presenter-view" class="viewport inactive">
+    </div>
   </div>
+
 </div>
 
 <%- include("includes/foot") %>

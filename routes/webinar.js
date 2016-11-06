@@ -68,8 +68,8 @@ let load_webinar = (req, res, next) => {
   }
   req.webinar = w;
   req.webinar.urls = {
-    viewer: req.config.app.base_url + "/webinar/" + w.id,
-    presenter: req.config.app.base_url + "/webinar/" + w.id + "/present"
+    viewer: "/webinar/" + w.id,
+    presenter: "/webinar/" + w.id + "/present"
   };
   req.template_data.opentok = {
     api_key: req.config.opentok.api_key,

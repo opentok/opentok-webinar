@@ -67,3 +67,55 @@ Tokinar.init_connection = function (_attrs, cb) {
   }
 
 };
+
+/**
+ * Sets broadcast status on the `#broadcast-status` element.
+ *
+ * @param {string} status A valid status. One of: "onair", "offline",
+ * "paused","ended","error".
+ */
+Tokinar.set_broadcast_status = function (status) {
+  var el = $("#broadcast-status");
+  var status_list = {
+    onair: "On Air",
+    connecting: "Connecting",
+    offline: "Offline",
+    paused: "Paused",
+    ended: "Ended",
+    error: "Error"
+  };
+  if (el !== null && !!status_list[status]) {
+    el.className = status;
+    el.textContent = status_list[status];
+  }
+};
+
+/**
+ * Create a message handler that writes message to specific DOM
+ * element.
+ *
+ * @param {Object} el The DOM element to print messages in
+ *
+ * @returns {Function} A closure that prints messages to specified
+ * element.
+ */
+Tokinar.create_message_handler = function (el) {
+  var _timeout = null,
+      _last_message = null;
+
+  return function message_handler_inner (data, escape) {
+    if (_timeout !== null) {
+      clearTimeout(_timeout);
+    }
+    _last_message = data;
+    escape = escape | true;
+    if (escape) {
+      el.textContent = data;
+    } else {
+      el.innerHTML = data;
+    }
+    _timeout = setTimeout(function () {
+      el.innerHTML = "";
+    }, 7500);
+  };
+};
