@@ -307,6 +307,10 @@ footer p {
     flex-grow: 1;
 }
 
+#webinar .display > div {
+    margin-bottom: 1.5rem;
+}
+
 #presenter-info {
     display: flex;
     flex-flow: row nowrap;
