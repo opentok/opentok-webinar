@@ -128,3 +128,21 @@ Tokinar.create_message_handler = function (el) {
     }, 7500);
   };
 };
+
+/**
+ * Update a timer with time since a given date
+ *
+ * @param {Object} el The element to write the time to
+ * @param {Object} starttime The start time created with `new Date()`
+ *
+ * @returns {Timeout} The Timeout function that can be used to clear the interval set here.
+ */
+Tokinar.set_timer = function (el, starttime) {
+  return setInterval(function () {
+    var t = Date.parse(new Date()) - Date.parse(starttime);
+    el.textContent = [Math.floor( t/(1000*60*60*24) ),
+                      Math.floor( (t/(1000*60*60)) % 24 ),
+                      Math.floor( (t/1000/60) % 60 ),
+                      Math.floor( (t/1000) % 60)].join(":");
+  }, 2000);
+};

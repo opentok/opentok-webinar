@@ -253,7 +253,6 @@ body > section {
 
 .box > div {
     padding-bottom: 0.5rem;
-    border-bottom: 0.25rem solid #f3f3f3;
     margin-bottom: 0.5rem;
 }
 
@@ -290,10 +289,6 @@ footer p {
 
 
 /* - Webinar pages ---------------------------- */
-.viewport {
-    background-color: #f3f3f3;
-}
-
 #webinar {
     display: flex;
     flex-direction: row;
@@ -316,6 +311,15 @@ footer p {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
+    align-items: baseline;
+}
+
+#presenter-msg {
+    flex-grow: 1;
+    padding: 0 1rem;
+    text-align: left;
+    color: #0080ab;
+    font-size: 0.9rem;
 }
 
 #broadcast-status {
@@ -351,6 +355,28 @@ footer p {
     background-color: #ce6363;
     color: #fff;
     font-weight: bold;
+}
+
+.viewport {
+    background-color: #f3f3f3;
+    padding: 1rem;
+    height: 15rem;
+    transition: all 0.5s ease-out;
+}
+
+.viewport.inactive {
+    background-color: #ccc;
+}
+
+#stats {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+#stats > div {
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
 }
 
 /* - Schedule pages --------------------------- */
