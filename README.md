@@ -15,3 +15,7 @@ A simple Webinar application based on OpenTok.
 - Copy `config.sample.js` to `config.js` and edit configuration.
 - Install dependencies: `npm install`
 - Start the application with: `npm start`
+
+## Credits
+
+- Icon source - [Octicons:broadcast](https://octicons.github.com/icon/broadcast/).

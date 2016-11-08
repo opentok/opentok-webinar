@@ -11,7 +11,11 @@
       _session;
 
   var handle_stream_created = function (evt) {
-    _session.subscribe(evt.stream, $("#presenter"));
+    _session.subscribe(evt.stream, $("#presenter"), {
+      insertMode: "append",
+      width: 640,
+      height: 480
+    });
   };
 
   var setup_handlers = function (session) {

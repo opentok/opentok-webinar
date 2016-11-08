@@ -5,6 +5,10 @@
 <div id="webinar" data-opentok="<%= JSON.stringify(opentok) %>">
 
   <div class="controls box">
+    <div id="installers" class="hidden">
+      <h2>Install extensions</h2>
+      <button id="chrome-install" class="btn btn-light">Chrome screensharing</button>
+    </div>
     <div id="webinar-controls">
       <h2>Broadcast controls</h2>
       <button id="start-btn" class="btn" disabled="disabled">Start broadcast</button>
@@ -31,8 +35,14 @@
     </div>
     <div id="session-info" class="box">
       <div id="viewports">
-        <h2>Presenter view</h2>
-        <div id="presenter-view" class="viewport inactive">
+        <h2>Your feeds</h2>
+        <div id="presenter-view">
+          <div id="presenter-screen" class="viewport inactive">
+            <h3>Screen</h3>
+          </div>
+          <div id="presenter-camera" class="viewport inactive">
+            <h3>Camera</h3>
+          </div>
         </div>
       </div>
       <div>
