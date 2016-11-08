@@ -1,7 +1,7 @@
 {
   "name" : "Tokinar Screen Sharing",
   "author": "Kaustav Das Modak",
-  "version" : "0.1",
+  "version" : "0.2",
   "manifest_version" : 2,
   "minimum_chrome_version": "34",
   "description" : "Screensharing extension for Tokinar.",
@@ -13,7 +13,8 @@
   "externally_connectable": {
     "matches": [
       "https://*.tokbox.com/*",
-      "https://*.kaustavdm.in/*"
+      "https://*.kaustavdm.in/*",
+      "https://tokinar.herokuapp.com/*"
     ]
   },
   "icons": {
