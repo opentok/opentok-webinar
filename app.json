@@ -12,6 +12,10 @@
     },
     "app__base_url": {
       "description": "Base URL for the application, including protocol, hostname and port. e.g., https://example.com or http://example.com:8080. Avoid trailing slash."
+    },
+    "app__ga": {
+      "description": "Google Analytics Tracking ID",
+      "required": false
     }
   }
 }

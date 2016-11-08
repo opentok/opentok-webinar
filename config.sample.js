@@ -26,7 +26,12 @@ module.exports = {
     /**
      * Directory for storage. Default: "./storage"
      */
-    storage_dir: "./storage"
+    storage_dir: "./storage",
+
+    /**
+     * Google Analytics Tracking ID as a string. Default: null.
+     */
+    ga: null
 
   },
 

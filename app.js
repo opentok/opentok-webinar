@@ -57,8 +57,9 @@ app.use((req, res, next) => {
     csrf: null,                 // Use req.csrfToken()
     error: msgs.from_query("error", req.query.e), // Error message
     info: msgs.from_query("info", req.query.i),   // Info message
-    scripts: ["tokinar"],    // List of scripts to load
-    styles: ["tokinar"]      // List of styles to load
+    scripts: ["tokinar"],       // List of scripts to load
+    styles: ["tokinar"],        // List of styles to load
+    ga: config.app.ga || null   // Google Analytics code
   };
 
   next();

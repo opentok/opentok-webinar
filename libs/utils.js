@@ -31,6 +31,7 @@ let merge_env = config => {
   let known_vars = ["app__base_url",
                     "app__port",
                     "app__storage_dir",
+                    "app__ga",
                     "opentok__api_key",
                     "opentok__api_secret",
                     "ssl__enabled",
@@ -62,7 +63,8 @@ let default_config = () => {
     app: {
       base_url: "http://localhost:8080",
       port: 8080,
-      storage_dir: "storage"
+      storage_dir: "storage",
+      ga: null
     },
     opentok: {
       api_key: "",
