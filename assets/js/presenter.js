@@ -28,7 +28,13 @@
       // $("#pause-btn").removeAttribute("disabled");
       $("#end-btn").removeAttribute("disabled");
       evt.target.setAttribute("disabled", "disabled");
-      $("#presenter-screen").classList.remove("inactive");
+
+      // TODO: remove hack with better detection
+      if (_screenshare_enabled) {
+        $("#presenter-screen").classList.remove("inactive");
+      } else {
+        $("#presenter-camera").classList.remove("inactive");
+      }
       _msg("You are live.");
       Tokinar.set_broadcast_status("onair");
     };
