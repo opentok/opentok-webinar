@@ -285,6 +285,59 @@ footer p {
     text-align: center;
 }
 
+#dialog {
+    position: fixed;
+    top: 50vh;
+    left: 50vw;
+    width: 40vw;
+    max-height: 80vh;
+    min-width: 30vw;
+    min-height: 30vh;
+    margin-top: -20vh;
+    margin-left: -20vw;
+    z-index: 10;
+    background: #fff;
+    border: 2px solid #ccc;
+    box-shadow: 0 1px 2px #ccc;
+    transition: all 0.5s ease-out;
+}
+
+#dialog.off {
+    top: 52vh;
+    display: none;
+}
+
+#dialog-toolbar {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 1.125rem;
+    height: 2rem;
+    background-color: #fafafa;
+}
+
+#dialog-title {
+    flex-grow: 1;
+    padding: 0 0.5rem;
+    text-align: left;
+    height: 2rem;
+}
+
+#dialog-close {
+    cursor: pointer;
+    height: 2rem;
+    padding: 0 0.5rem;
+}
+
+#dialog-content {
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 1rem;
+    text-align: center;
+}
+
 /* - Homepage --------------------------------- */
 
 

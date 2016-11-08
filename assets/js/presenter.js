@@ -93,15 +93,16 @@
     $("#start-btn").setAttribute("disabled", "disabled");
   };
 
-  var install_chrome_extension = function () {
-    var ext_url = "https://chrome.google.com/webstore/detail/ibjimaenheofjdnpjplikdaccljdfmaf";
-    chrome && chrome.webstore && chrome.webstore.install(ext_url, function() {
+  var install_chrome_extension = function (evt) {
+    evt.preventDefault();
+    chrome && chrome.webstore && chrome.webstore.install(evt.target.href, function() {
       $("#installers").className = "hidden";
       $("#chrome-install").setAttribute("disabled", "disabled");
     }, function (err) {
-      $("#chrome-install").setAttribute("disabled", "disabled");
-      _msg("Unable to install screensharing extension.");
       console.log(err);
+      _msg("Please install the Tokinar Screen Sharing extension and refresh the page.");
+      Tokinar.set_dialog($("#chrome-installer-message"));
+      $("#chrome-install").setAttribute("disabled", "disabled");
     });
   };
 
@@ -130,7 +131,7 @@
     $("#end-btn").addEventListener("click", handle_end);
 
     // Installers
-    $("#chrome-install").addEventListener("click", install_chrome_extension);
+    $("#chrome-install").addEventListener("click", install_chrome_extension, false);
 
     // Check screenshare support
     check_screenshare_support();

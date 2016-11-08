@@ -3,6 +3,15 @@
 <footer>
   <p>Tokinar runs on <a href="https://tokbox.com" target="_blank">TokBox</a> | <a href="https://github.com/kaustavdm/tokinar" target="_blank">View Source</a></p>
 </footer>
+
+<div id="dialog" class="off">
+  <div id="dialog-toolbar">
+    <div id="dialog-title"></div>
+    <div id="dialog-close">x</div>
+  </div>
+  <div id="dialog-content"></div>
+</div>
+
 <% scripts.forEach(function (script) { %>
   <script src="/assets/js/<%= script %>.js"></script>
 <% }); %>

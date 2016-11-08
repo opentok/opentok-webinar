@@ -151,3 +151,44 @@ Tokinar.set_timer = function (el, starttime) {
                       Math.floor( (t/1000) % 60)].join(":");
   }, 2000);
 };
+
+
+/**
+ * Set dialog box. Display modal.
+ *
+ * @param {Element|String} input A DOM element whose innerHTML is used
+ * to fill the content of the dialog. Or a string.
+ * @param {String=} title An optional string to use as dialog
+ * title. If first param is a DOM element, then its "data-title"
+ * attribute can be used instead.
+ */
+Tokinar.set_dialog = function (input, title) {
+  if (typeof input === "string") {
+    $("#dialog-content").innerHTML = input;
+  } else if (input instanceof Element) {
+    $("#dialog-content").innerHTML = input.innerHTML;
+    title = title || input.dataset["title"] || "";
+  }
+  $("#dialog-title").innerHTML = title || "";
+  $("#dialog").classList.remove("off");
+};
+
+/**
+ * Unset dialog box. Hide modal.
+ */
+Tokinar.unset_modal = function () {
+  $("#dialog").className = "off";
+  $("#dialog-content").innerHTML = $("#dialog-title").innerHTML = "";
+};
+
+/**
+ * Set binding for dialog modal
+ */
+(function set_dialog_binding () {
+  var c = $("#dialog-close");
+  if (c !== null) {
+    c.addEventListener("click", function () {
+      Tokinar.unset_modal();
+    }, false);
+  }
+})();
