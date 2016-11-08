@@ -24,11 +24,16 @@ var $ = _selector();
 /**
  * Set a timer to server side messages
  */
-setTimeout(function () {
-  document.querySelectorAll(".msg").forEach(function (el) {
-    el.parentNode.removeChild(el);
-  });
-}, 7500);
+(function _clear_msgs () {
+  var msgs = document.querySelectorAll(".msg");
+  if (msgs.length > 0) {
+    setTimeout(function () {
+      msgs.forEach(function (el) {
+        el.parentNode.removeChild(el);
+      });
+    }, 7500);
+  }
+})();
 
 /**
  * Create a namespace for Tokinar
