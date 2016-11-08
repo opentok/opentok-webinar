@@ -25,3 +25,7 @@ tramp
 
 # Ignore default storage location
 /storage
+
+# Ignore default ssl certificate and key
+/key.pem
+/cert.pem

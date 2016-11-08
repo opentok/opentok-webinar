@@ -92,6 +92,23 @@ app.use((err, req, res, next) => {
 
 
 // Start server ----------------------------------
-app.listen(config.app.port || 8080, () => {
-  console.log(`Listening on port ${config.app.port || 8080}...`);
-});
+let port = config.app.port || 8080;
+
+if (!config.ssl.enabled) {
+  // Start as Non-ssl
+  app.listen(port, () => {
+    console.log(`Listening on port ${port}...`);
+  });
+} else {
+  // Start as SSL
+  const https = require("https");
+  const fs = require("fs");
+  const https_options = {
+    key: fs.readFileSync(config.ssl.key),
+    cert: fs.readFileSync(config.ssl.cert),
+    passphrase: config.ssl.passphrase
+  };
+  https.createServer(https_options, app).listen(port, () => {
+    console.log(`Listening on secure port ${port}...`);
+  });
+}

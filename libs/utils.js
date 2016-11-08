@@ -32,7 +32,11 @@ let merge_env = config => {
                     "app__port",
                     "app__storage_dir",
                     "opentok__api_key",
-                    "opentok__api_secret"];
+                    "opentok__api_secret",
+                    "ssl__enabled",
+                    "ssl__key",
+                    "ssl__cert",
+                    "ssl__passphrase"];
 
   for (let k of known_vars) {
     if (process.env[k]) {
@@ -58,11 +62,17 @@ let default_config = () => {
     app: {
       base_url: "http://localhost:8080",
       port: 8080,
-      storage_dir: "./storage"
+      storage_dir: "storage"
     },
     opentok: {
       api_key: "",
       api_secret: ""
+    },
+    ssl: {
+      enabled: false,
+      key: "key.pem",
+      cert: "cert.pem",
+      passphrase: ""
     }
   };
 };

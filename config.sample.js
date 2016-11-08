@@ -27,6 +27,7 @@ module.exports = {
      * Directory for storage. Default: "./storage"
      */
     storage_dir: "./storage"
+
   },
 
   // ----------------------------------------------
@@ -45,6 +46,35 @@ module.exports = {
      * API Secret obtained from TokBox
      */
     api_secret: "xxxx"
-  }
+  },
 
+  // ---------------------------------------------
+
+  /**
+   * SSL settings
+   */
+  ssl: {
+
+    /**
+     * SSL enabled? Make this `true` to serve over HTTPS.
+     */
+    enabled: false,
+
+    /**
+     * Path to SSL key. Relative to project root or absolute path.
+     */
+    key: "key.pem",
+
+    /**
+     * Path to SSL certificate. Relative to project root or absolute
+     * path.
+     */
+    cert: "cert.pem",
+
+    /**
+     * SSL passphrase, if any
+     */
+    passphrase: ""
+
+  }
 };
