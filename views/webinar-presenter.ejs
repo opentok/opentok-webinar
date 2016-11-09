@@ -29,22 +29,48 @@
   </div>
 
   <div class="display">
+
     <div id="presenter-info">
       <div id="broadcast-status" class="offline">Offline</div>
       <div id="presenter-msg">Loading...</div>
     </div>
+
     <div id="session-info" class="box">
       <div id="viewports">
+
         <h2>Your feeds</h2>
         <div id="presenter-view">
-          <div id="presenter-screen" class="viewport inactive">
+
+          <div class="viewport">
+            <h3>Camera/Mic</h3>
+            <div class="viewport-controls">
+              <label class="btn">
+                <input type="checkbox" id="camera-control-share-video"
+                       checked="checked" disabled="disabled">Use cam
+              </label>
+              <label class="btn">
+                <input type="checkbox" id="camera-control-mute-audio" disabled="disabled">Mute mic
+              </label>
+              <button id="camera-share-start" disabled="disabled"
+                      class="btn">Start Camera/Mic</button>
+            </div>
+            <div id="presenter-camera" class="feed inactive"></div>
+          </div>
+
+          <div class="viewport">
             <h3>Screen</h3>
+            <div class="viewport-controls">
+              <button id="screen-share-start"
+                      class="btn" disabled="disabled">Start screenshare</button>
+              <button id="screen-share-stop"
+                      class="btn btn-light" disabled="disabled">Stop screenshare</button>
+            </div>
+            <div id="presenter-screen" class="feed inactive"></div>
           </div>
-          <div id="presenter-camera" class="viewport inactive">
-            <h3>Camera</h3>
-          </div>
+
         </div>
       </div>
+
       <div>
         <h2>Statistics</h2>
         <div id="stats">
@@ -53,9 +79,9 @@
           <div id="duration">Duration: <span>--</span></div>
         </div>
       </div>
+
     </div>
   </div>
-
 </div>
 
 <script id="chrome-installer-message" type="text/template" data-title="Install Chrome extension">

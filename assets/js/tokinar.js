@@ -96,7 +96,8 @@ Tokinar.set_broadcast_status = function (status) {
     offline: "Offline",
     paused: "Paused",
     ended: "Ended",
-    error: "Error"
+    error: "Error",
+    ready: "Ready"
   };
   if (el !== null && !!status_list[status]) {
     el.className = status;
@@ -163,6 +164,7 @@ Tokinar.set_timer = function (el, starttime) {
  * attribute can be used instead.
  */
 Tokinar.set_dialog = function (input, title) {
+  Tokinar.unset_modal();
   if (typeof input === "string") {
     $("#dialog-content").innerHTML = input;
   } else if (input instanceof Element) {

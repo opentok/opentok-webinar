@@ -219,6 +219,17 @@ input[type="submit"].btn.btn-red:disabled {
     border-radius: 0;
 }
 
+label.btn {
+    padding: 0.5rem;
+    margin: 0.25rem;
+    background-color: #fff;
+    border: 1px solid #0088ab;
+    color: #0088ab;
+    font-family: "Open Sans", sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
 /* - Page layout ------------------------------ */
 body > section {
     display: block;
@@ -397,6 +408,11 @@ footer p {
     font-weight: bold;
 }
 
+#broadcast-status.ready {
+    background-color: green;
+    color: #fff;
+}
+
 #broadcast-status.connecting {
     background-color: #d0b600;
     color: #fff;
@@ -439,26 +455,38 @@ footer p {
     background-color: #f3f3f3;
     margin: 0 1rem;
     padding: 1rem;
-    width: 24rem;
-    height: 18rem;
-    transition: all 0.5s ease-out;
-}
-
-.viewport:first-child {
-    margin-left: 0;
-}
-
-.viewport:first-child {
-    margin-right: 0;
-}
-
-.viewport.inactive {
-    background-color: #f9f9f9;
-    color: #ccc;
+    min-width: 24rem;
+    min-height: 18rem;
 }
 
 .viewport h3 {
     margin: 0 0 0.5rem 0;
+}
+
+.viewport-controls {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+}
+
+.viewport-controls button.btn {
+    min-width: 3rem;
+    padding: 0.5rem;
+    margin: 0.25rem;
+}
+
+.viewport-controls .hidden {
+    display: none;
+}
+
+.feed {
+    width: 320px;
+    height: 240px;
+    transition: all 0.5s ease-out;
+}
+
+.feed.inactive {
+    background-color: #fafafa;
 }
 
 /* - Schedule pages --------------------------- */
