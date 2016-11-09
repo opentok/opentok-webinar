@@ -93,9 +93,9 @@
     $("#start-btn").setAttribute("disabled", "disabled");
   };
 
-  var install_chrome_extension = function (evt) {
-    evt.preventDefault();
-    chrome && chrome.webstore && chrome.webstore.install(evt.target.href, function() {
+  var install_chrome_extension = function () {
+    var ext_url = "https://chrome.google.com/webstore/detail/ibjimaenheofjdnpjplikdaccljdfmaf";
+    chrome && chrome.webstore && chrome.webstore.install(ext_url, function() {
       $("#installers").className = "hidden";
       $("#chrome-install").setAttribute("disabled", "disabled");
     }, function (err) {
