@@ -89,6 +89,7 @@
     // $("#pause-btn").setAttribute("disabled", "disabled");
     $("#end-btn").setAttribute("disabled", "disabled");
     $("#start-btn").setAttribute("disabled", "disabled");
+    $("#screen-share-start").setAttribute("disabled", "disabled");
   };
 
 
