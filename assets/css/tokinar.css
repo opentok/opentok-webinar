@@ -352,7 +352,7 @@ footer p {
 /* - Homepage --------------------------------- */
 
 
-/* - Webinar pages ---------------------------- */
+/* - Webinar presenter------------------------- */
 #webinar {
     display: flex;
     flex-direction: row;
@@ -488,5 +488,35 @@ footer p {
 .feed.inactive {
     background-color: #fafafa;
 }
+
+/* - Webinar viewer --------------------------- */
+#webinar.webinar-viewer .viewports {
+    max-width: 80%;
+    margin: 1rem auto;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    position: relative;
+}
+
+.webinar-viewer .feed {
+    width: 640px;
+    height: 480px;
+    background-color: #fafafa;
+}
+
+.webinar-viewer .feed.small {
+    width: 120px;
+    height: 90px;
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    right: 0;
+}
+
+.webinar-viewer .feed.hidden {
+    display: none;
+}
+
 
 /* - Schedule pages --------------------------- */
