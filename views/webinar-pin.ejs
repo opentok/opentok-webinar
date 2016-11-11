@@ -1,0 +1,31 @@
+<%- include("includes/head") %>
+
+<h1 class="page-title">PIN required</h1>
+
+<% if (role === "presenter") { %>
+  <p>Presenters for this webinar need to enter a PIN to be able to present.</p>
+<% } else { %>
+  <p>Viewers of this webinar need to enter a PIN to access the webinar.</p>
+<% } %>
+
+<% if (wrong_pin) { %>
+  <div class="msg error-msg">The PIN you provided was invalid.</div>
+<% }  %>
+
+<form method="GET" id="form-webinar-pin" autocomplete="off">
+
+  <div class="inputs">
+    <div class="input-box">
+      <label for="webinar-presenter-pin">PIN</label>
+      <input type="text" id="webinar-presenter-pin" maxlength="32" name="pin" required autofocus>
+    </div>
+  </div>
+
+  <div class="highlight">
+    <a href="/" class="btn btn-grey">&lt; Cancel</a>
+    <input type="submit" class="btn" value="Enter">
+  </div>
+
+</form>
+
+<%- include("includes/foot") %>

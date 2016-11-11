@@ -97,12 +97,38 @@ let get_token = role => {
   };
 };
 
+
+/**
+ * Matches PIN for viewers and presenters based on role
+ *
+ * @param {string} role Valid values: "presenter", "viewer"
+ * @return {Function|undefined} Returns a middleware closure
+ */
+let match_pin = role => {
+  var field_name = role === "presenter" ? "presenter_pin" : "viewer_pin";
+
+  return (req, res, next) => {
+    var pin = req.webinar[field_name].length ? req.webinar[field_name] : "";
+    var pin_matched = pin.length > 0 && req.query.pin !== pin ? false : true;
+
+    req.template_data.wrong_pin = pin.length === 0 || req.query.pin === undefined || pin_matched ? false : true;
+
+    if (pin.length === 0 || pin_matched) {
+      next();
+    } else {
+      req.template_data.title = role === "presenter" ?
+        `PIN required for presenting webinar: ${req.webinar.name}` :
+        `PIN required for webinar: ${req.webinar.name}`;
+      req.template_data.role = role;
+      res.render("webinar-pin", req.template_data);
+    }
+  };
+};
+
 /**
  * Handler for presenter viewer
- *
- * @todo Enable PIN handling
  */
-router.get("/:webinar_id/present", load_webinar, get_token("publisher"), (req, res) => {
+router.get("/:webinar_id/present", load_webinar, match_pin("presenter"), get_token("publisher"), (req, res) => {
   req.template_data.title = `[Presenter] Webinar: ${req.webinar.name}`;
   req.template_data.webinar = req.webinar;
   req.template_data.scripts.push("presenter");
@@ -111,10 +137,8 @@ router.get("/:webinar_id/present", load_webinar, get_token("publisher"), (req, r
 
 /**
  * Handler for webinar's viewer
- *
- * @todo Enable PIN handling
  */
-router.get("/:webinar_id", load_webinar, get_token("subscriber"), (req, res) => {
+router.get("/:webinar_id", load_webinar, match_pin("viewer"), get_token("subscriber"), (req, res) => {
   req.template_data.title = `Webinar: ${req.webinar.name}`;
   req.template_data.webinar = req.webinar;
   req.template_data.scripts.push("viewer");
