@@ -127,7 +127,7 @@
 
   var create_publisher_camera = function (el) {
     var opts = {
-      insertMode: "replace",
+      insertMode: "append",
       publishAudio: $("#camera-control-mute-audio") ? !$("#camera-control-mute-audio").checked : true,
       publishVideo: $("#camera-control-share-video") ? $("#camera-control-share-video").checked : false
     };
@@ -150,9 +150,11 @@
 
   var create_publisher_screenshare = function (el) {
     var opts = {
-      insertMode: "replace",
+      insertMode: "append",
       publishAudio: false,
-      videoSource: "screen"
+      videoSource: "screen",
+      width: "100%",
+      height: "100%"
     };
 
     _msg("Setting up screenshare...");
@@ -165,7 +167,7 @@
       }
 
       el.target.setAttribute("disabled", "disabled");
-      //$("#screen-share-stop").removeAttribute("disabled");
+      $("#screen-share-stop").removeAttribute("disabled");
       _msg("Screenshare is set up.");
 
       // Push screenshare publisher if session is live
@@ -180,6 +182,25 @@
         });
       }
     });
+
+    _publisher_screen.on("mediaStopped", function () {
+      $("#screen-share-start").removeAttribute("disabled");
+      $("#screen-share-stop").setAttribute("disabled", "disabled");
+    });
+  };
+
+
+  /**
+   * @todo Fix Chrome crash on stopping screen share.
+   */
+  var stop_publisher_screenshare = function (evt) {
+    if (_publisher_screen != null) {
+      // TODO: Check if there is a better way to remove screenshare
+      // stream.
+      _publisher_screen.destroy();
+      evt.target.setAttribute("disabled", "disabled");
+      $("#screen-share-start").removeAttribute("disabled");
+    }
   };
 
 
@@ -212,6 +233,7 @@
     $("#camera-control-share-video").addEventListener("change", handle_camera_toggle, false);
     $("#camera-control-mute-audio").addEventListener("change", handle_mute_mic, false);
     $("#screen-share-start").addEventListener("click", create_publisher_screenshare, false);
+    $("#screen-share-stop").addEventListener("click", stop_publisher_screenshare, false);
   };
 
 
