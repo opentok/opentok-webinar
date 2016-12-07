@@ -14,7 +14,15 @@
       _timer,
       _session,
       _publisher_camera,
-      _publisher_screen;
+      _publisher_screen,
+      _publishers_count = 0,
+      _subscribers_count = 0;
+
+
+  var user_count_timer = setInterval(function update_count() {
+    $("#viewers span").textContent = _subscribers_count;
+    $("#presenters span").textContent = _publishers_count;
+  }, 5000);
 
 
   var handle_publish_success = function () {
@@ -237,9 +245,28 @@
   };
 
 
+  var connection_event_handlers = {
+    connectionCreated: function (evt) {
+      if (evt.connection.permissions.publish) {
+        _publishers_count++;
+      } else {
+        _subscribers_count++;
+      }
+    },
+    connectionDestroyed: function (evt) {
+      if (evt.connection.permissions.publish) {
+        _publishers_count--;
+      } else {
+        _subscribers_count--;
+      }
+    }
+  };
+
+
   var setup_handlers = function (session) {
     _session = session;
     _session.on("sessionDisconnected", handle_disconnect);
+    _session.on(connection_event_handlers);
 
     // Register screenshare
     OT.registerScreenSharingExtension("chrome", "ibjimaenheofjdnpjplikdaccljdfmaf", 2);

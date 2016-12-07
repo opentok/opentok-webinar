@@ -3,10 +3,14 @@
 <h1 class="page-title">Webinar: <%= webinar.name %></h1>
 
 <div id="webinar" class="webinar-viewer" data-opentok="<%= JSON.stringify(opentok) %>">
-  <div class="viewports">
-    <div id="presenter-camera" class="feed small">
+  <div class="webinar-viewer-viewports no-video">
+    <div class="standby">
+      <p>The presentation has not yet begun. Your screen will update
+      once the presenter begins broadcasting. Please stand by&hellip;</p>
     </div>
-    <div id="presenter-screen" class="feed">
+    <div id="presenter-camera" class="feed camera">
+    </div>
+    <div id="presenter-screen" class="feed screen">
     </div>
   </div>
 </div>

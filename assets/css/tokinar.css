@@ -490,22 +490,59 @@ footer p {
 }
 
 /* - Webinar viewer --------------------------- */
-#webinar.webinar-viewer .viewports {
-    max-width: 80%;
-    margin: 1rem auto;
+.webinar-viewer-viewports {
+    width: 100%;
+    min-height: 75vh;
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
     position: relative;
 }
 
-.webinar-viewer .feed {
-    width: 640px;
-    height: 480px;
-    background-color: #fafafa;
+.webinar-viewer-viewports .standby {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: #f1f1f1;
+    padding: 1rem;
 }
 
-.webinar-viewer .feed.small {
+.webinar-viewer-viewports.is-live .standby {
+    display: none;
+}
+
+.webinar-viewer-viewports .feed {
+    display: none;
+    background-color: #fafafa;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    transition: opacity 0.3s ease-out, width 0.3s ease-out;
+}
+
+.webinar-viewer-viewports.is-live .feed {
+    display: block;
+}
+
+.webinar-viewer-viewports.has-camera .screen,
+.webinar-viewer-viewports.has-screen .camera {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.webinar-viewer-viewports.has-screen .screen,
+.webinar-viewer-viewports.has-camera.has-screen .screen,
+.webinar-viewer-viewports.has-camera .camera {
+    display: block;
+    height: 100%;
+    width: auto;
+    opacity: 100;
+    flex-grow: 1;
+}
+
+.webinar-viewer-viewports.has-camera.has-screen .camera {
     width: 120px;
     height: 90px;
     position: absolute;
@@ -514,9 +551,23 @@ footer p {
     right: 0;
 }
 
+.webinar-viewer-viewports.is-live.no-video {
+    background: #fafafa url("/assets/images/live-no-video.png") center center no-repeat;
+}
+
+.webinar-viewer .feed.expand {
+    flex-grow: 1;
+}
+
 .webinar-viewer .feed.hidden {
     display: none;
 }
 
+/**
+ * OpenTok specific CSS overrides
+ */
+.webinar-viewer .OT_widget-container {
+    background-color: #fafafa;
+}
 
 /* - Schedule pages --------------------------- */

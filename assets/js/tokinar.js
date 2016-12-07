@@ -38,7 +38,9 @@ var $ = _selector();
 /**
  * Create a namespace for Tokinar
  */
-var Tokinar = {};
+var Tokinar = {
+  _dialog_timer: null
+};
 
 /**
  * Get opentok credentials from document
@@ -153,7 +155,6 @@ Tokinar.set_timer = function (el, starttime) {
   }, 2000);
 };
 
-
 /**
  * Set dialog box. Display modal.
  *
@@ -162,8 +163,13 @@ Tokinar.set_timer = function (el, starttime) {
  * @param {String=} title An optional string to use as dialog
  * title. If first param is a DOM element, then its "data-title"
  * attribute can be used instead.
+ * @param {Number=} timer A number in miliseconds to automatically
+ * unset the modal after the specified time.
  */
-Tokinar.set_dialog = function (input, title) {
+Tokinar.set_dialog = function (input, title, timer) {
+  if (!!Tokinar._dialog_timer) {
+    clearTimeout(Tokinar._dialog_timer);
+  }
   Tokinar.unset_modal();
   if (typeof input === "string") {
     $("#dialog-content").innerHTML = input;
@@ -173,6 +179,11 @@ Tokinar.set_dialog = function (input, title) {
   }
   $("#dialog-title").innerHTML = title || "";
   $("#dialog").classList.remove("off");
+  if (!!timer) {
+    Tokinar._dialog_timer = setTimeout(function () {
+      Tokinar.unset_modal();
+    }, timer);
+  }
 };
 
 /**
