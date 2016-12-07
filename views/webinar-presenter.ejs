@@ -16,14 +16,16 @@
       <button id="end-btn" class="btn btn-red" disabled="disabled">End broadcast</button>
     </div>
     <div class="url-box">
-      <h2>Share URLs</h2>
-      <ul>
-        <li>
-          <a href="<%= webinar.urls.viewer %>" target="_blank">Viewer URL</a>
-        </li>
-        <li>
-          <a href="<%= webinar.urls.presenter %>" target="_blank">Presenter URL</a>
-        </li>
+      <h2>Viewer URL</h2>
+      <div class="input-box input-box-table">
+        <input id="share-url-viewer" type="text" value="<%= webinar.urls.viewer %>">
+        <button class="btn copy" data-clipboard-target="#share-url-viewer">Copy</button>
+      </div>
+      <h2>Presenter URL</h2>
+      <div class="input-box input-box-table">
+        <input id="share-url-presenter" type="text" value="<%= webinar.urls.presenter %>">
+        <button class="btn copy" data-clipboard-target="#share-url-presenter">Copy</button>
+      </div>
       </ul>
     </div>
   </div>
@@ -90,6 +92,14 @@
      target="_blank" class="btn">Install Extension from Chrome Webstore</a>
   </p>
   <p><a href="javascript:location.reload()">Reload</a></p>
+</script>
+
+<script id="share-viewer-url" type="text/template" data-title="Share URL">
+  <p>Share this URL with your viewers.</p>
+  <div class="input-box input-box-table">
+    <input id="viewer-url-dialog" type="text" value="<%= webinar.urls.viewer %>" readonly>
+    <button class="btn copy" data-clipboard-target="#viewer-url-dialog">Copy</button>
+  </div>
 </script>
 
 <%- include("includes/foot") %>

@@ -57,7 +57,7 @@ app.use((req, res, next) => {
     csrf: null,                 // Use req.csrfToken()
     error: msgs.from_query("error", req.query.e), // Error message
     info: msgs.from_query("info", req.query.i),   // Info message
-    scripts: ["tokinar"],       // List of scripts to load
+    scripts: ["libs/clipboard", "tokinar"],       // List of scripts to load
     styles: ["tokinar"],        // List of styles to load
     ga: config.app.ga || null   // Google Analytics code
   };
@@ -66,12 +66,7 @@ app.use((req, res, next) => {
 });
 
 // Mount routes ----------------------------------
-app.get("/", (req, res) => {
-  res.render("homepage", req.template_data);
-});
-
-// Mount scheduling routes
-app.use("/schedule", require("./routes/schedule"));
+app.use("/", require("./routes/home"));
 
 // Mount webinar routes
 app.use("/webinar", require("./routes/webinar"));

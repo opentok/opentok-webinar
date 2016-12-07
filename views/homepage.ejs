@@ -1,11 +1,25 @@
 <%- include("includes/head") %>
 
-<h1>Tokinar</h1>
+<div class="highlight leader">
+  <h1 class="page-title">Tokinar</h1>
 
-<div class="highlight">
-  <a href="/webinar/new" class="btn">Start Webinar Now</a>
-  OR
-  <a href="/schedule" class="btn btn-light">Schedule Webinar</a>
+  <p>A simple webinar demo based on OpenTok.</p>
+
+  <div class="highlight">
+    <form method="POST" id="form-webinar-new" action="webinar/new" autocomplete="off">
+      <div class="input-box">
+        <label class="required" for="webinar-name">Title</label>
+        <input type="text" id="webinar-name" maxlength="32" name="webinar_name"
+               placeholder="e.g. My Fancy Webinar Demo" required autofocus>
+      </div>
+      <input type="submit" class="btn btn-large" value="Start New Webinar">
+
+      <input type="hidden" name="_csrf" value="<%= csrf %>">
+
+    </form>
+  </div>
 </div>
+
+
 
 <%- include("includes/foot") %>

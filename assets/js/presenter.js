@@ -80,6 +80,9 @@
   var handle_end = function () {
     if(confirm("Are you sure you want to end the broadcast?")) {
       _session.disconnect();
+      setTimeout(function () {
+        window.location.href = "/";
+      }, 1500);
     }
   };
 
@@ -282,5 +285,7 @@
   // Test browser capabilities and start session
   _msg("Setting up...");
   Tokinar.init_connection(_attrs, setup_handlers);
+
+  Tokinar.set_dialog($("#share-viewer-url"));
 
 })($, Tokinar, OT);

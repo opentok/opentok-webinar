@@ -157,6 +157,13 @@ input[type="submit"].btn.btn-red:disabled {
     color: #ccc;
 }
 
+.btn.large {
+    min-height: 4rem;
+    min-width: 15rem;
+    padding: 1.5rem;
+    font-size: 1.25rem;
+}
+
 /* - Reusable components ---------------------- */
 .center {
     text-align: center;
@@ -171,21 +178,29 @@ input[type="submit"].btn.btn-red:disabled {
     text-align: center;
 }
 
-.inputs {
-    width: 75%;
-    margin: 1rem auto;
-    position: relative;
-    background-color: #fff;
-    font-size: 1.25rem;
-    text-align: center;
+.highlight .highlight {
+    background-color: #eee;
 }
 
-.inputs > .input-box {
+.leader {
+    margin-top: 1rem;
+    font-size: 1.25rem;
+    color: #333;
+}
+
+.leader h1 {
+    font-weight: bold;
+}
+
+.input-box {
     margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
 }
 
 .input-box label {
-    width: 12rem;
+    width: 9rem;
     display: inline-block;
     text-align: right;
     margin-right: 1rem;
@@ -201,7 +216,8 @@ input[type="submit"].btn.btn-red:disabled {
     content: " : ";
 }
 
-.input-box input[type="text"] {
+.input-box input[type="text"],
+.input-box textarea {
     padding: 0.5rem;
     width: 20rem;
     font-weight: bold;
@@ -212,6 +228,7 @@ input[type="submit"].btn.btn-red:disabled {
     border: 1px solid #0099cc;
     border-radius: 0;
     transition: border 0.5s ease-out;
+    outline: none;
 }
 
 .input-box input[type="text"]:focus {
@@ -230,6 +247,33 @@ label.btn {
     cursor: pointer;
 }
 
+.input-box-table {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-start;
+
+}
+
+.input-box-table input[type="text"] {
+    flex-grow: 1;
+    font-size: 0.8rem;
+    font-weight: 400;
+    padding: 0.25rem;
+    height: 2rem;
+    margin: 0;
+    color: #666;
+}
+
+.input-box-table .btn {
+    min-width: auto;
+    min-height: auto;
+    width: 4rem;
+    height: 2rem;
+    margin: 0;
+    padding: 0 0.25rem;
+    line-height: 2rem;
+}
+
 /* - Page layout ------------------------------ */
 body > section {
     display: block;
@@ -237,8 +281,14 @@ body > section {
     margin: 0 auto;
     overflow-x: hidden;
     padding: 0 1rem;
-    min-height: 90vh;
+    min-height: 80vh;
     background-color: #fff;
+    opacity: 100;
+    transition: opacity 0.3s ease-out;
+}
+
+.has-dialog section {
+    opacity: 0.5;
 }
 
 .page-title {
@@ -553,5 +603,3 @@ footer p {
 .webinar-viewer .OT_widget-container {
     background-color: #fafafa;
 }
-
-/* - Schedule pages --------------------------- */

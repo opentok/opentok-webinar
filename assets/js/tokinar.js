@@ -179,6 +179,7 @@ Tokinar.set_dialog = function (input, title, timer) {
   }
   $("#dialog-title").innerHTML = title || "";
   $("#dialog").classList.remove("off");
+  $("body").classList.add("has-dialog");
   if (!!timer) {
     Tokinar._dialog_timer = setTimeout(function () {
       Tokinar.unset_modal();
@@ -192,6 +193,7 @@ Tokinar.set_dialog = function (input, title, timer) {
 Tokinar.unset_modal = function () {
   $("#dialog").className = "off";
   $("#dialog-content").innerHTML = $("#dialog-title").innerHTML = "";
+  $("body").classList.remove("has-dialog");
 };
 
 /**
@@ -203,5 +205,20 @@ Tokinar.unset_modal = function () {
     c.addEventListener("click", function () {
       Tokinar.unset_modal();
     }, false);
+  }
+})();
+
+
+/**
+ * Setup clipboard target
+ */
+(function setup_clipboard_targets () {
+  if (typeof Clipboard === "function") {
+    var cboard = new Clipboard(".copy");
+    cboard.on("success", function (e) {
+      console.log(e);
+      console.log(e.action, e.trigger);
+      e.trigger.textContent = "Copied!";
+    });
   }
 })();

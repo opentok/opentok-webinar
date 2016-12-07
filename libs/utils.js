@@ -2,17 +2,18 @@
  * Utility methods for Tokinar
  */
 
-const path = require("path");
+const path = require("path"),
+      crypto = require("crypto");
+
 
 /**
- * Generate URL "slug" version of a given string.
+ * Generate slug
  *
- * @param {string} s An input string.
- *
- * @returns {string} The slug as a string.
+ * @returns {String} A 7-character slug, hyphenated in between.
  */
-let as_slug = s => {
-  return s.trim().toLowerCase().replace(/\W/g, "-").replace(/\-+$/, "");
+let create_slug = () => {
+  var id = crypto.randomBytes(3).toString("hex");
+  return [id.slice(0, 3), id.slice(3)].join("-");
 };
 
 
@@ -98,6 +99,6 @@ let load_config = dir => {
 
 // Export them
 module.exports = {
-  as_slug: as_slug,
+  create_slug: create_slug,
   load_config: load_config
 };
