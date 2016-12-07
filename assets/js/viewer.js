@@ -67,6 +67,10 @@
     connectionDestroyed: function (evt) {
       if (evt.connection.permissions.publish) {
         _publishers--;
+        if (_publishers < 1) {
+          set_viewport(false, false);
+          _viewports.classList.remove("is-live");
+        }
       } else {
         _subscribers--;
       }
