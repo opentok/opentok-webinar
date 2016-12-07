@@ -30,7 +30,7 @@
         width: "100%",
         height: "100%",
         showControls: false,
-        fitMode: "contain",
+        fitMode: "cover",
         mirror: true
       }, function () {
         set_viewport({ camera: evt.stream.hasVideo });

@@ -491,11 +491,11 @@ footer p {
 
 /* - Webinar viewer --------------------------- */
 .webinar-viewer-viewports {
-    width: 100%;
+    width: 90vw;
     min-height: 75vh;
     display: flex;
     flex-flow: row nowrap;
-    justify-content: center;
+    justify-content: flex-start;
     position: relative;
     background: #fff url("/assets/images/not-live.png") center center no-repeat;
 }
@@ -527,24 +527,20 @@ footer p {
     height: 100%;
     width: auto;
     opacity: 100;
+}
+
+.webinar-viewer-viewports.has-screen .screen,
+.webinar-viewer-viewports.has-camera .camera {
     flex-grow: 1;
 }
 
 .webinar-viewer-viewports.has-camera.has-screen .camera {
-    width: 120px;
-    height: 90px;
-    position: absolute;
-    z-index: 1;
-    bottom: 0;
-    right: 0;
+    width: 18rem;
+    flex-grow: 0;
 }
 
 .webinar-viewer-viewports.is-live.no-video {
     background: #fafafa url("/assets/images/live-no-video.png") center center no-repeat;
-}
-
-.webinar-viewer .feed.expand {
-    flex-grow: 1;
 }
 
 .webinar-viewer .feed.hidden {
