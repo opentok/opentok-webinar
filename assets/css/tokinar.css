@@ -294,7 +294,8 @@ body > section {
 .page-title {
     margin: 1rem 0 1rem 0;
     padding: 0 0 1rem 0;
-    border-bottom: 1px solid #0099cc;
+    font-weight: bold;
+    text-align: center;
 }
 
 .page-title span {
@@ -542,7 +543,7 @@ footer p {
 /* - Webinar viewer --------------------------- */
 .webinar-viewer-viewports {
     width: 90vw;
-    min-height: 75vh;
+    height: 75vh;
     display: flex;
     flex-flow: row nowrap;
     justify-content: flex-start;
