@@ -46,6 +46,16 @@ Alternatively, you can quickly deploy this project to Heroku by clicking the but
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/kaustavdm/tokinar)
 
+### SSL requirements
+
+You will need SSL to use this demo on latest browsers. You can either set up a proxy through nginx or apache and run this application without SSL, or you can let `node` serve it directly on SSL when you run `npm start`.
+
+If you want `node` to serve this application using SSL, you will need to edit `config.js` and change `ssl.enabled` to `true`. Change the values in the `ssl` section to point to your key and certificate pair.
+
+**Self-signed certificate**: If you have `openssl` installed and on `PATH`, you can run `npm run certs` to generate a self-signed certificate. This command will create `key.pem` and `cert.pem` in the project root, which are also the default value for the `ssl` configuration.
+
+If you are deploying to Heroku, you do not need to worry about the SSL config.
+
 ## Credits
 
 - Icon source - [Octicons:broadcast](https://octicons.github.com/icon/broadcast/).
