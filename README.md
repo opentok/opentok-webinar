@@ -3,7 +3,31 @@ Tokinar
 
 A simple Webinar application based on OpenTok.
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/kaustavdm/tokinar)
+[![Deploy to Heroku](https://img.shields.io/badge/Deploy-Heroku-blue.svg)](https://heroku.com/deploy?template=https://github.com/kaustavdm/tokinar) [![Demo mirror #1](https://img.shields.io/badge/Demo-mirror_1-green.svg)](https://tokinar.kaustavdm.in)
+
+## How it works
+
+Tokinar treats a webinar as a uni-directional broadcast from 1 presenter to multiple viewers. The presenter can share screen and/or their camera, along with their audio. Presenters are given URLs that they can share with their viewers to join the webinar. Viewers' screens adjust depending on whether the presenter is sharing both screen and camera, only camera or only screen.
+
+Presenter tokens are created with the `role` as `publisher` and viewer tokens are created with the `role` as `subscriber`. Presenters are shown number of viewers by listening to OpenTok events and this is done entirely client-side. There is no OpenTok callback integration.
+
+**Note:** Currently, Tokinar supports only one presenter per webinar. It does not restrict to one presenter, but there are no layout controls implemented to handle multiple presenters, e.g., even though viewers can subscribe to multiple presenters, presenters of the same webinar will not be able to see each other.
+
+### Project layout
+
+- `app.js` - This is the main server script that loads the APIs and starts the NodeJS server.
+- *`assets/`* - Client-side assets (styles, scripts, images) that are served as static files by the server.
+  - `assets/js/tokinar.js` - Common client-side utilities.
+  - `assets/js/presenter.js` - JavaScript loaded for presenter.
+  - `assets/js/viewer.js` - JavaScript loaded for viewer.
+- *`extensions/`* - Screen-sharing extensions.
+- `config.sample.js` - Contains the project configuration. (See [Install](#install) instructions).
+- *`libs/`* - Reusable utilities and libraries used by the application.
+- *`routes/`* - Contains the routes used by Express to serve pages.
+  - `routes/webinar.js` - Contains routes for webinar pages, including creating OpenTok sessions and tokens.
+- *`views/`* - Server-side views that are rendered on requests.
+  - `views/webinar-presenter.ejs` - The view rendered for a presenter.
+  - `views/webinar-viewer.ejs` - The view rendered for a presenter.
 
 ## Requirements
 
@@ -15,6 +39,12 @@ A simple Webinar application based on OpenTok.
 - Copy `config.sample.js` to `config.js` and edit configuration.
 - Install dependencies: `npm install`
 - Start the application with: `npm start`
+
+### Deploy to Heroku
+
+Alternatively, you can quickly deploy this project to Heroku by clicking the button below. You will need OpenTok API key and secret and Heroku will manage the rest.
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/kaustavdm/tokinar)
 
 ## Credits
 
