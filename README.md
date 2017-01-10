@@ -11,7 +11,10 @@ Tokinar treats a webinar as a uni-directional broadcast from 1 presenter to mult
 
 Presenter tokens are created with the `role` as `publisher` and viewer tokens are created with the `role` as `subscriber`. Presenters are shown number of viewers by listening to OpenTok events and this is done entirely client-side. There is no OpenTok callback integration.
 
-**Note:** Currently, Tokinar supports only one presenter per webinar. It does not restrict to one presenter, but there are no layout controls implemented to handle multiple presenters, e.g., even though viewers can subscribe to multiple presenters, presenters of the same webinar will not be able to see each other.
+**A few notes:**
+
+- Screen-sharing is implemented only for Chrome.
+- Currently, Tokinar supports only one presenter per webinar. It does not restrict to one presenter, but there are no layout controls implemented to handle multiple presenters, e.g., even though viewers can subscribe to multiple presenters, presenters of the same webinar will not be able to see each other.
 
 ### Project layout
 
