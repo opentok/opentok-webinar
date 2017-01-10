@@ -14,6 +14,7 @@ Presenter tokens are created with the `role` as `publisher` and viewer tokens ar
 **A few notes:**
 
 - Screen-sharing is implemented only for Chrome.
+- OpenTok session IDs and tokens are created on the server-side and embedded in the HTML, so they are already available when the DOM has been parsed. Even though this method avoids an extra HTTP request by skipping a XHR call to fetch tokens, it also results in creating a new token for each page generation. (For an example of a JSON-based API to fetch tokens, see the [opentok-green-screen](https://github.com/kaustavdm/opentok-green-screen) demo.)
 - Currently, Tokinar supports only one presenter per webinar. It does not restrict to one presenter, but there are no layout controls implemented to handle multiple presenters, e.g., even though viewers can subscribe to multiple presenters, presenters of the same webinar will not be able to see each other.
 
 ### Project layout
