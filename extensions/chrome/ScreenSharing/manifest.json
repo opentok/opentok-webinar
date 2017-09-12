@@ -1,10 +1,10 @@
 {
-  "name" : "Tokinar Screen Sharing",
+  "name" : "TokBox demo Screen Sharing",
   "author": "Kaustav Das Modak",
-  "version" : "0.2",
+  "version" : "0.3",
   "manifest_version" : 2,
   "minimum_chrome_version": "34",
-  "description" : "Screensharing extension for Tokinar.",
+  "description" : "Screensharing extension for Tokbox demos.",
   "homepage_url": "https://github.com/kaustavdm/tokinar/",
   "background": {
     "scripts": ["background-script.js"],
@@ -14,7 +14,7 @@
     "matches": [
       "https://*.tokbox.com/*",
       "https://*.kaustavdm.in/*",
-      "https://tokinar.herokuapp.com/*"
+      "https://*.herokuapp.com/*"
     ]
   },
   "icons": {
