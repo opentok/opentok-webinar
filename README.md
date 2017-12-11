@@ -1,5 +1,5 @@
-Tokinar
-=========
+OpenTok Webinar demo
+=====================
 
 A simple Webinar application based on OpenTok.
 
