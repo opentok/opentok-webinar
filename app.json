@@ -1,7 +1,7 @@
 {
   "name": "Tokinar",
   "description": "Simple Webinar application based on OpenTok.",
-  "repository": "https://github.com/kaustav/tokinar",
+  "repository": "https://github.com/opentok/opentok-webinar",
   "keywords": ["webinar", "tokbox", "opentok", "webrtc"],
   "env": {
     "opentok__api_key": {

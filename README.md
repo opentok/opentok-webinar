@@ -3,7 +3,7 @@ OpenTok Webinar demo
 
 A simple Webinar application based on OpenTok.
 
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/kaustavdm/opentok-webinar)
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/opentok/opentok-webinar)
 
 ## How it works
 
@@ -48,7 +48,7 @@ Presenter tokens are created with the `role` as `publisher` and viewer tokens ar
 
 Alternatively, you can quickly deploy this project to Heroku by clicking the button below. You will need OpenTok API key and secret and Heroku will manage the rest.
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/kaustavdm/opentok-webinar)
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/opentok/opentok-webinar)
 
 ### SSL requirements
 
