@@ -1,6 +1,6 @@
 {
   "name": "tokinar",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Simple Webinar system based on OpenTok",
   "main": "app.js",
   "scripts": {
@@ -13,7 +13,7 @@
     "url": "git+https://github.com/opentok/opentok-webinar.git"
   },
   "engines": {
-    "node": "6.9.x",
+    "node": ">=14.0",
     "npm": "3.x"
   },
   "keywords": [
@@ -32,9 +32,12 @@
     "body-parser": "^1.15.2",
     "cookie-parser": "^1.4.3",
     "csurf": "^1.9.0",
-    "ejs": "^2.5.2",
+    "ejs": "^3.1.8",
     "express": "^4.14.0",
     "opentok": "^2.4.0"
   },
-  "cacheDirectories": ["node_modules", "storage" ]
+  "cacheDirectories": [
+    "node_modules",
+    "storage"
+  ]
 }

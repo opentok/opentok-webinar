@@ -35,7 +35,7 @@ Presenter tokens are created with the `role` as `publisher` and viewer tokens ar
 
 ## Requirements
 
-- NodeJS v6.9+
+- NodeJS v14+
 - TokBox Account (API Key and Secret)
 
 ## Install
