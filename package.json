@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/opentok/opentok-webinar#readme",
   "dependencies": {
-    "body-parser": "^1.15.2",
+    "body-parser": "^2.0.0",
     "cookie-parser": "^1.4.3",
     "csurf": "^1.9.0",
     "ejs": "^3.1.8",
